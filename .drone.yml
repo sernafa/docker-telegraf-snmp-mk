@@ -1,0 +1,20 @@
+---
+kind: pipeline
+name: default
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+  - name: build-image
+    image: plugins/docker
+    settings:
+      username:
+         from_secret: dockerhub_user
+      password:
+        from_secret: dockerhub_pass
+      repo: sernafa/docker-telegraf-snmp-mk
+      tags:
+        - 14.0
+        - latest
